@@ -1,0 +1,71 @@
+package AI;   // Declares that this class belongs to the AI package.
+
+import java.util.Scanner;   // Imports the Scanner class to take input from the user.
+
+public class RuleBasedChatbot {   // Main class of the program.
+
+    // Main method - Program execution starts from here.
+    public static void main(String[] args) {
+
+        // Creates a Scanner object to read user input from the keyboard.
+        Scanner sc = new Scanner(System.in);
+
+        // Displays the chatbot title.
+        System.out.println("===== Rule-Based Chatbot =====");
+
+        // Informs the user that typing "bye" will terminate the chatbot.
+        System.out.println("Type 'bye' to exit.");
+
+        // Infinite loop to keep the chatbot running until the user types "bye".
+        while (true) {
+
+            // Prompts the user to enter a message.
+            System.out.print("\nYou: ");
+
+            // Reads the user's input and converts it to lowercase.
+            // This allows the chatbot to accept inputs like HI, Hi, hI, etc.
+            String input = sc.nextLine().toLowerCase();
+
+            // Checks if the user entered "hi" or "hello".
+            if (input.equals("hi") || input.equals("hello")) {
+
+                // Responds with a greeting.
+                System.out.println("Bot: Hello! How can I help you?");
+            }
+
+            // Checks if the user asks "how are you".
+            else if (input.equals("how are you")) {
+
+                // Responds with a predefined answer.
+                System.out.println("Bot: I am fine. Thank you!");
+            }
+
+            // Checks if the user asks the chatbot's name.
+            else if (input.equals("what is your name")) {
+
+                // Displays the chatbot's name.
+                System.out.println("Bot: I am a Rule-Based Chatbot.");
+            }
+
+            // Checks if the user wants to end the conversation.
+            else if (input.equals("bye")) {
+
+                // Displays a goodbye message.
+                System.out.println("Bot: Goodbye! Have a great day!");
+
+                // Exits the while loop and ends the program.
+                break;
+            }
+
+            // Executes if none of the above conditions match.
+            else {
+
+                // Default response for unknown questions.
+                System.out.println("Bot: Sorry, I don't understand your question.");
+            }
+        }
+
+        // Closes the Scanner object to release system resources.
+        sc.close();
+    }
+}
