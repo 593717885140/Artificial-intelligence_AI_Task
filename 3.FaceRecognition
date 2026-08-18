@@ -1,0 +1,69 @@
+package AI;
+
+// Import Scanner class to take input from the user
+import java.util.Scanner;
+
+public class FaceRecognition {
+
+    public static void main(String[] args) {
+
+        // Create Scanner object to read input from keyboard
+        Scanner sc = new Scanner(System.in);
+
+        // Display the program heading
+        System.out.println("===== Face Detection & Recognition =====");
+
+        // Ask the user to enter the detected person's name
+        System.out.print("Enter detected person's name: ");
+
+        // Read the name entered by the user
+        // toLowerCase() converts the input into lowercase
+        // Example: "Sandip" becomes "sandip"
+        String face = sc.nextLine().toLowerCase();
+
+        // Check whether the entered name is "suvarna"
+        if (face.equals("suvarna")) {
+
+            // Display recognition message
+            System.out.println("Face Recognized");
+
+            // Welcome the recognized person
+            System.out.println("Welcome Suvarna!");
+
+        }
+
+        // If the first condition is false,
+        // check whether the name is "sandip"
+        else if (face.equals("sandip")) {
+
+            // Display recognition message
+            System.out.println("Face Recognized");
+
+            // Welcome the recognized person
+            System.out.println("Welcome Sandip!");
+
+        }
+
+        // If previous conditions are false,
+        // check whether the name is "priya"
+        else if (face.equals("priya")) {
+
+            // Display recognition message
+            System.out.println("Face Recognized");
+
+            // Welcome the recognized person
+            System.out.println("Welcome Priya!");
+
+        }
+
+        // If none of the above names match
+        else {
+
+            // Display unknown person message
+            System.out.println("Unknown Person");
+        }
+
+        // Close the Scanner object
+        sc.close();
+    }
+}
