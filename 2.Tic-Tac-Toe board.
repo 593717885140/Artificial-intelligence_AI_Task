@@ -1,0 +1,193 @@
+package AI;  // Declares that this class belongs to the AI package.
+
+import java.util.Scanner;   // Imports Scanner class to take user input.
+
+public class TicTacToeAI {
+
+    // Creates a 3x3 Tic-Tac-Toe board.
+    // Initially, the board contains numbers (1-9) representing positions.
+    static char[][] board = {
+            {'1','2','3'},
+            {'4','5','6'},
+            {'7','8','9'}
+    };
+
+    // Scanner object to read input from the keyboard.
+    static Scanner sc = new Scanner(System.in);
+
+    // Main method - Program execution starts here.
+    public static void main(String[] args) {
+
+        // Infinite loop until someone wins or the match ends in a draw.
+        while (true) {
+
+            // Display the current game board.
+            printBoard();
+
+            // Ask the player to enter a move.
+            System.out.print("Enter your move (1-9): ");
+
+            // Read the user's input.
+            int move = sc.nextInt();
+
+            // Try to place 'X' on the selected position.
+            // If the position is invalid or already occupied,
+            // display an error message.
+            if (!placeMove(move, 'X')) {
+                System.out.println("Invalid Move!");
+                continue;   // Restart the loop.
+            }
+
+            // Check whether the player has won.
+            if (checkWinner('X')) {
+                printBoard();
+                System.out.println("You Win!");
+                break;   // Exit the game.
+            }
+
+            // Check whether the board is full.
+            if (isBoardFull()) {
+                printBoard();
+                System.out.println("Draw!");
+                break;
+            }
+
+            // AI makes its move.
+            aiMove();
+
+            // Check whether AI has won.
+            if (checkWinner('O')) {
+                printBoard();
+                System.out.println("AI Wins!");
+                break;
+            }
+
+            // Check whether the board is full after AI's move.
+            if (isBoardFull()) {
+                printBoard();
+                System.out.println("Draw!");
+                break;
+            }
+        }
+
+        // Close the Scanner object.
+        sc.close();
+    }
+
+    // AI Move Method
+    static void aiMove() {
+
+        // Simple AI logic:
+        // It chooses the first available empty position.
+        for (int i = 0; i < 3; i++) {
+            for (int j = 0; j < 3; j++) {
+
+                // If the current cell still contains a digit,
+                // it means the position is empty.
+                if (Character.isDigit(board[i][j])) {
+
+                    // Place AI's symbol 'O'
+                    board[i][j] = 'O';
+
+                    // Exit after placing one move.
+                    return;
+                }
+            }
+        }
+    }
+
+    // Method to place either X or O on the board.
+    static boolean placeMove(int pos, char symbol) {
+
+        // Traverse the entire board.
+        for (int i = 0; i < 3; i++) {
+            for (int j = 0; j < 3; j++) {
+
+                // Compare the entered number with the board position.
+                if (board[i][j] == (char)(pos + '0')) {
+
+                    // Replace the number with X or O.
+                    board[i][j] = symbol;
+
+                    return true; // Move successful.
+                }
+            }
+        }
+
+        // Position already occupied or invalid.
+        return false;
+    }
+
+    // Method to check whether a player has won.
+    static boolean checkWinner(char s) {
+
+        // Check all rows and columns.
+        for (int i = 0; i < 3; i++) {
+
+            // Check rows.
+            if (board[i][0] == s &&
+                board[i][1] == s &&
+                board[i][2] == s)
+                return true;
+
+            // Check columns.
+            if (board[0][i] == s &&
+                board[1][i] == s &&
+                board[2][i] == s)
+                return true;
+        }
+
+        // Check left diagonal.
+        if (board[0][0] == s &&
+            board[1][1] == s &&
+            board[2][2] == s)
+            return true;
+
+        // Check right diagonal.
+        if (board[0][2] == s &&
+            board[1][1] == s &&
+            board[2][0] == s)
+            return true;
+
+        // No winner found.
+        return false;
+    }
+
+    // Method to check whether the board is full.
+    static boolean isBoardFull() {
+
+        // Traverse every cell.
+        for (char[] row : board)
+
+            for (char c : row)
+
+                // If any digit remains,
+                // there is still an empty position.
+                if (Character.isDigit(c))
+                    return false;
+
+        // No empty cells.
+        return true;
+    }
+
+    // Method to print the Tic-Tac-Toe board.
+    static void printBoard() {
+
+        System.out.println();
+
+        // Traverse every row.
+        for (int i = 0; i < 3; i++) {
+
+            // Print current row.
+            System.out.println(board[i][0] + " | " +
+                               board[i][1] + " | " +
+                               board[i][2]);
+
+            // Print separator after first and second row.
+            if (i < 2)
+                System.out.println("--+---+--");
+        }
+
+        System.out.println();
+    }
+}
