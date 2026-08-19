@@ -1,0 +1,129 @@
+package AI;
+
+// Import Scanner class to take input from the user
+import java.util.Scanner;
+
+// Class declaration
+public class RecommendationSystem {
+
+	// Main method - execution of the program starts from here
+	public static void main(String[] args) {
+
+		// Create Scanner object to read input from the keyboard
+		Scanner sc = new Scanner(System.in);
+
+		// Display the title of the Recommendation System
+		System.out.println("===== Recommendation System =====");
+
+		// Display available categories
+		System.out.println("Categories:");
+
+		// Display category 1
+		System.out.println("1. Movies");
+
+		// Display category 2
+		System.out.println("2. Books");
+
+		// Display category 3
+		System.out.println("3. Music");
+
+		// Display category 4
+		System.out.println("4. Electronics");
+
+		// Ask the user to enter their favorite category
+		System.out.print("\nEnter your favorite category: ");
+
+		// Read the category entered by the user
+		// nextLine() reads the complete line entered by the user
+		// toLowerCase() converts the input into lowercase
+		// Example: "MOVIES" -> "movies"
+		String category = sc.nextLine().toLowerCase();
+
+		// switch checks the value stored in the category variable
+		// and executes the matching case
+		switch (category) {
+
+		// If user enters "movies"
+		case "movies":
+
+			// Display the movie recommendations
+			System.out.println("\nRecommended Movies:");
+
+			// Movie recommendation 1
+			System.out.println("1. Inception");
+
+			// Movie recommendation 2
+			System.out.println("2. Interstellar");
+
+			// Movie recommendation 3
+			System.out.println("3. The Dark Knight");
+
+			// Exit this switch case
+			break;
+
+		// If user enters "books"
+		case "books":
+
+			// Display the book recommendations
+			System.out.println("\nRecommended Books:");
+
+			// Book recommendation 1
+			System.out.println("1. Atomic Habits");
+
+			// Book recommendation 2
+			System.out.println("2. Rich Dad Poor Dad");
+
+			// Book recommendation 3
+			System.out.println("3. The Alchemist");
+
+			// Exit this switch case
+			break;
+
+		// If user enters "music"
+		case "music":
+
+			// Display the music recommendations
+			System.out.println("\nRecommended Songs:");
+
+			// Song recommendation 1
+			System.out.println("1. Believer");
+
+			// Song recommendation 2
+			System.out.println("2. Shape of You");
+
+			// Song recommendation 3
+			System.out.println("3. Perfect");
+
+			// Exit this switch case
+			break;
+
+		// If user enters "electronics"
+		case "electronics":
+
+			// Display the electronics recommendations
+			System.out.println("\nRecommended Products:");
+
+			// Product recommendation 1
+			System.out.println("1. Laptop");
+
+			// Product recommendation 2
+			System.out.println("2. Smartphone");
+
+			// Product recommendation 3
+			System.out.println("3. Smart Watch");
+
+			// Exit this switch case
+			break;
+
+		// If the user enters anything other than the available categories
+		default:
+
+			// Display an error/rejection message
+			System.out.println("\nSorry! No recommendations available.");
+		}
+
+		// Close the Scanner object
+		// This releases the keyboard/input resource
+		sc.close();
+	}
+}
